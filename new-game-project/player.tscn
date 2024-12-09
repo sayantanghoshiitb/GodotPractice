@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cswtlg82egndm"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ve2hr"]
+[ext_resource type="Texture2D" uid="uid://bhk1b0l6b4rwk" path="res://charmander.png" id="2_0ugd2"]
+[ext_resource type="Texture2D" uid="uid://dybi1apk2djek" path="res://door.png" id="3_fwejk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_013ry"]
+size = Vector2(13.3, 16.3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auv2t"]
+size = Vector2(70.9, 79)
+
+[sub_resource type="Gradient" id="Gradient_o7kxd"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t2jhv"]
+gradient = SubResource("Gradient_o7kxd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3j64s"]
+size = Vector2(23, 25)
+
+[node name="MainScene" type="Node2D"]
+position = Vector2(34, 231)
+
+[node name="Game" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="CharacterBody2D" parent="Game"]
+script = ExtResource("1_ve2hr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Player"]
+position = Vector2(3.75, 22.75)
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_013ry")
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/Player"]
+position = Vector2(-2, 18)
+scale = Vector2(1.59583, 1.44583)
+texture = ExtResource("2_0ugd2")
+
+[node name="Platform" type="StaticBody2D" parent="Game"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Platform"]
+position = Vector2(322.5, 103.5)
+scale = Vector2(10, 1)
+shape = SubResource("RectangleShape2D_auv2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/Platform"]
+position = Vector2(324.5, 104.281)
+scale = Vector2(2.80078, 79.4376)
+texture = SubResource("GradientTexture1D_t2jhv")
+
+[node name="Door" type="StaticBody2D" parent="Game"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Door"]
+position = Vector2(674.5, 51.5)
+shape = SubResource("RectangleShape2D_3j64s")
+
+[node name="Sprite2D" type="Sprite2D" parent="Game/Door"]
+position = Vector2(673, 51)
+scale = Vector2(0.590217, 0.493835)
+texture = ExtResource("3_fwejk")
+
+[node name="WinText" type="Label" parent="Game"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 200.0
+offset_right = 428.0
+offset_bottom = 223.0
+horizontal_alignment = 1
